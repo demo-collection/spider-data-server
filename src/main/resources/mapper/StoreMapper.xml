@@ -26,7 +26,7 @@
         select * from store
         <where>
             <if test="query != null">
-               title like #{query}
+               title like '%${query}%'
             </if>
         </where>
     </select>
