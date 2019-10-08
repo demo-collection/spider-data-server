@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spider.data.server.spider.mapper.StoreMapper">
+
+    <resultMap id="BaseResultMap" type="com.spider.data.server.spider.entity.StoreEntity">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <id column="key_word" property="keyWord" jdbcType="VARCHAR"/>
+        <id column="title" property="title" jdbcType="VARCHAR"/>
+        <id column="detail_url" property="detailUrl" jdbcType="VARCHAR"/>
+        <id column="download_url" property="downLoadUrl" jdbcType="LONG"/>
+        <id column="look_over" property="lookOver" jdbcType="INTEGER"/>
+        <id column="reply" property="reply" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="BaseResultMap">
+        select *
+        from store
+    </select>
+
+    <select id="query" parameterType="Map" resultMap="BaseResultMap">
+        select * from event
+    </select>
+
+</mapper>
