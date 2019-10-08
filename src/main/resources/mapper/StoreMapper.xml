@@ -8,7 +8,7 @@
         <id column="key_word" property="keyWord" jdbcType="VARCHAR"/>
         <id column="title" property="title" jdbcType="VARCHAR"/>
         <id column="detail_url" property="detailUrl" jdbcType="VARCHAR"/>
-        <id column="download_url" property="downLoadUrl" jdbcType="LONG"/>
+        <id column="download_url" property="downLoadUrl" jdbcType="VARCHAR"/>
         <id column="look_over" property="lookOver" jdbcType="INTEGER"/>
         <id column="reply" property="reply" jdbcType="INTEGER"/>
     </resultMap>
@@ -19,7 +19,10 @@
     </select>
 
     <select id="query" parameterType="Map" resultMap="BaseResultMap">
-        select * from event
+        select * from event where like %#query%
     </select>
 
+    <select id="findByQuery" parameterType="String" resultMap="BaseResultMap">
+        select * from event where like %#query%
+    </select>
 </mapper>

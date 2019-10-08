@@ -6,9 +6,11 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
+@Component(value = "storeMapper")
 public interface StoreMapper {
     List<StoreEntity> findAll();
 
-    Page<StoreEntity> query();
+    Page<StoreEntity> query(String query);
+
+    List<StoreEntity> findByQuery(String query);
 }
