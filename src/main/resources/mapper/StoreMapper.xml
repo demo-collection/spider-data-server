@@ -19,10 +19,15 @@
     </select>
 
     <select id="query" parameterType="Map" resultMap="BaseResultMap">
-        select * from event where like %#query%
+        select * from store where like %#query%
     </select>
 
-    <select id="findByQuery" parameterType="String" resultMap="BaseResultMap">
-        select * from event where like %#query%
+    <select id="findByQuery" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select * from store
+        <where>
+            <if test="query != null">
+               title like #{query}
+            </if>
+        </where>
     </select>
 </mapper>
