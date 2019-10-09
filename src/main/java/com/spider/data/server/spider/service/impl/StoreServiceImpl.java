@@ -15,8 +15,11 @@ public class StoreServiceImpl implements StoreService {
     private StoreRepository storeRepository;
 
     @Override
-    public List<StoreEntity> findAll(String query, String page, String size) {
+    public List<StoreEntity> findAll(String query, String order, String page, String size) {
         PageHelper.startPage(Integer.parseInt(page), Integer.parseInt(size));
+        if (order != null) {
+            return storeRepository.findByQueryAndOrder(query, order);
+        }
         return storeRepository.findByQuery(query);
     }
 }

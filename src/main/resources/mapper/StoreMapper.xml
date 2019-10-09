@@ -30,4 +30,16 @@
             </if>
         </where>
     </select>
+
+    <select id="findByQueryAndOrder" resultMap="BaseResultMap">
+        select * from store
+        <where>
+            <if test="query != null">
+                title like '%${query}%'
+            </if>
+            <if test="order != null">
+                order by #{order} desc
+            </if>
+        </where>
+    </select>
 </mapper>

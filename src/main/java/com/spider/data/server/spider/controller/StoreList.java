@@ -21,10 +21,11 @@ public class StoreList {
     @GetMapping("/list")
     public BaseResponse list(
             @RequestParam(name = "query", required = false) String query,
+            @RequestParam(name = "order", required = false) String order,
             @RequestParam(name = "page", defaultValue = "1") String page,
             @RequestParam(name = "size", defaultValue = "20") String size
     ) {
-        List<StoreEntity> list = storeService.findAll(query, page, size);
+        List<StoreEntity> list = storeService.findAll(query, order, page, size);
         if (list != null) {
             System.out.println(list.size());
             return BaseResponse.responseSuccess(list, "请求成功");
