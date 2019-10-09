@@ -31,7 +31,7 @@
         </where>
     </select>
 
-    <select id="findByQueryAndOrder" resultMap="BaseResultMap">
+    <select id="findByQueryAndOrder" parameterType="com.spider.data.server.spider.data.dto.FindStoreList" resultMap="BaseResultMap">
         select * from store
         <where>
             <if test="query != null">
