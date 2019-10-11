@@ -18,27 +18,20 @@
         from store
     </select>
 
-    <select id="query" parameterType="Map" resultMap="BaseResultMap">
-        select * from store where like %#query%
+    <select id="query" parameterType="string" resultMap="BaseResultMap">
+        select * from store
+        <where>
+            <if test="query != null">
+                title like concat("%", #{query}, "%")
+            </if>
+        </where>
     </select>
 
     <select id="findByQuery" parameterType="java.lang.String" resultMap="BaseResultMap">
         select * from store
         <where>
             <if test="query != null">
-               title like '%${query}%'
-            </if>
-        </where>
-    </select>
-
-    <select id="findByQueryAndOrder" parameterType="com.spider.data.server.spider.data.dto.FindStoreList" resultMap="BaseResultMap">
-        select * from store
-        <where>
-            <if test="query != null">
-                title like '%${query}%'
-            </if>
-            <if test="order != null">
-                order by #{order} desc
+               title like concat("%", #{query}, "%")
             </if>
         </where>
     </select>

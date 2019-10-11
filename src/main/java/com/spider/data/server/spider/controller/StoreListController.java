@@ -2,6 +2,7 @@ package com.spider.data.server.spider.controller;
 
 
 import com.spider.data.server.spider.data.BaseResponse;
+import com.spider.data.server.spider.data.PageInfo;
 import com.spider.data.server.spider.entity.StoreEntity;
 import com.spider.data.server.spider.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/store")
-public class StoreList {
+public class StoreListController {
     @Autowired
     private StoreService storeService;
 
@@ -27,9 +28,16 @@ public class StoreList {
     ) {
         List<StoreEntity> list = storeService.findAll(query, order, page, size);
         if (list != null) {
-            System.out.println(list.size());
             return BaseResponse.responseSuccess(list, "请求成功");
         }
         return BaseResponse.responseError("请求失败");
+    }
+
+    @GetMapping("/search")
+    public BaseResponse search(
+            @RequestParam(name = "query", defaultValue = "") String query
+    ) {
+        PageInfo<StoreEntity> storeEntityPageInfo = storeService.findByQuery(query);
+        return BaseResponse.responseSuccess(storeEntityPageInfo, "请求成功");
     }
 }
