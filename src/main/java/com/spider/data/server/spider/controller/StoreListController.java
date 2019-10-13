@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/store")
 public class StoreListController {
@@ -35,7 +37,10 @@ public class StoreListController {
     public BaseResponse search(
             @RequestParam(name = "query", defaultValue = "") String query
     ) {
-        PageInfo<StoreEntity> storeEntityPageInfo = storeService.findByQuery(query);
-        return BaseResponse.responseSuccess(storeEntityPageInfo, "请求成功");
+        List<StoreEntity> storeEntityList = storeService.findByQuery(query);
+        if (storeEntityList.size() == 0) {
+            return BaseResponse.responseError("请求失败");
+        }
+        return BaseResponse.responseSuccess(storeEntityList, "请求成功");
     }
 }

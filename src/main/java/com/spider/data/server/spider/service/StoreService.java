@@ -10,5 +10,5 @@ import java.util.List;
 public interface StoreService {
     PageInfo<StoreEntity> findAll(String query, String order, String page, String size);
 
-    PageInfo<StoreEntity> findByQuery(String query);
+    List<StoreEntity> findByQuery(String query);
 }

@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.List;
+
 @Service
 public class StoreServiceImpl implements StoreService {
     @Autowired
@@ -30,15 +32,7 @@ public class StoreServiceImpl implements StoreService {
     }
 
     @Override
-    public PageInfo<StoreEntity> findByQuery(String query) {
-        PageHelper.startPage(1, 20);
-        Page<StoreEntity> storeEntityPage = storeMapper.query(query);
-
-        PageInfo<StoreEntity> pageInfo = new PageInfo<>();
-        pageInfo.setList(storeEntityPage);
-        pageInfo.setPageNum(storeEntityPage.getPageNum());
-        pageInfo.setPageSize(storeEntityPage.getPageSize());
-
-        return pageInfo;
+    public List<StoreEntity> findByQuery(String query) {
+        return storeMapper.query(query);
     }
 }
