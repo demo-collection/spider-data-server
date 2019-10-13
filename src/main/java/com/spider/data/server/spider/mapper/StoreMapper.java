@@ -12,5 +12,5 @@ public interface StoreMapper {
 
     Page<StoreEntity> query(String query);
 
-    List<StoreEntity> findByQuery(String query);
+    Page<StoreEntity> findByQuery(String query);
 }

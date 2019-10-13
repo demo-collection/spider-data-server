@@ -8,7 +8,7 @@ import java.util.List;
 
 @Service
 public interface StoreService {
-    List<StoreEntity> findAll(String query, String order, String page, String size);
+    PageInfo<StoreEntity> findAll(String query, String order, String page, String size);
 
     PageInfo<StoreEntity> findByQuery(String query);
 }

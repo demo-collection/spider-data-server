@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/store")
 public class StoreListController {
@@ -26,7 +24,7 @@ public class StoreListController {
             @RequestParam(name = "page", defaultValue = "1") String page,
             @RequestParam(name = "size", defaultValue = "20") String size
     ) {
-        List<StoreEntity> list = storeService.findAll(query, order, page, size);
+        PageInfo<StoreEntity> list = storeService.findAll(query, order, page, size);
         if (list != null) {
             return BaseResponse.responseSuccess(list, "请求成功");
         }
