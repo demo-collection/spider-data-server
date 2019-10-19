@@ -11,4 +11,6 @@ public interface StoreService {
     PageInfo<StoreEntity> findAll(String query, String order, String page, String size);
 
     List<StoreEntity> findByQuery(String query);
+
+    void updateIsLooked(String id);
 }

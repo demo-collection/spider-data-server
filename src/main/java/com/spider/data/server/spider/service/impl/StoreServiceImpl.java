@@ -35,4 +35,9 @@ public class StoreServiceImpl implements StoreService {
     public List<StoreEntity> findByQuery(String query) {
         return storeMapper.query(query);
     }
+
+    @Override
+    public void updateIsLooked(String id) {
+        storeMapper.updateIsLooked(id);
+    }
 }

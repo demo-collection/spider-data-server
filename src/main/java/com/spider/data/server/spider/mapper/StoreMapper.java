@@ -13,4 +13,6 @@ public interface StoreMapper {
     Page<StoreEntity> query(String query);
 
     Page<StoreEntity> findByQuery(String query);
+
+    void updateIsLooked(String id);
 }

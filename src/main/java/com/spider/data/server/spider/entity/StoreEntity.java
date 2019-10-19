@@ -22,4 +22,10 @@ public class StoreEntity {
 
     // 回复量
     private Integer reply;
+
+    // 已读
+    private Integer isLooked;
+
+    // 已下载
+    private Integer isDownLoad;
 }
