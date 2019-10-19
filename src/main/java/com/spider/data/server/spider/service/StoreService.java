@@ -13,4 +13,6 @@ public interface StoreService {
     List<StoreEntity> findByQuery(String query);
 
     void updateIsLooked(String id);
+
+    void updateIsDownLoad(String id);
 }

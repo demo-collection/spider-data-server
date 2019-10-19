@@ -47,11 +47,27 @@ public class StoreListController {
 
     @PostMapping(value = "/update_is_looked", produces = MediaType.APPLICATION_JSON_VALUE)
     public BaseResponse updateIsLooked(HttpServletRequest request) {
-        StoreEntity storeEntity;
+        return getBaseResponse(request, "update_is_looked");
+    }
+
+    @PostMapping(value = "/update_is_download", produces = MediaType.APPLICATION_JSON_VALUE)
+    public BaseResponse updateIsDownLoad(HttpServletRequest request) {
+        return getBaseResponse(request, "update_is_download");
+    }
+
+    private BaseResponse getBaseResponse(HttpServletRequest request, String type) {
+        StoreEntity storeEntity = new StoreEntity();
         try {
             String requestId = JsonRequest.getPayload(request);
             storeEntity = JSONObject.parseObject(requestId, StoreEntity.class);
-            storeService.updateIsLooked(storeEntity.getId().toString());
+            switch (type) {
+                case "update_is_looked":
+                    storeService.updateIsLooked(storeEntity.getId().toString());
+                    break;
+                case "update_is_download":
+                    storeService.updateIsDownLoad(storeEntity.getId().toString());
+                    break;
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return BaseResponse.responseError(e.getMessage());

@@ -39,4 +39,8 @@
     <update id="updateIsLooked" parameterType="string">
         update store set is_looked=1 where id = #{query}
     </update>
+
+    <update id="updateIsDownLoad" parameterType="string">
+        update store set is_download=1 where id = #{query}
+    </update>
 </mapper>

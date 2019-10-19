@@ -40,4 +40,9 @@ public class StoreServiceImpl implements StoreService {
     public void updateIsLooked(String id) {
         storeMapper.updateIsLooked(id);
     }
+
+    @Override
+    public void updateIsDownLoad(String id) {
+        storeMapper.updateIsDownLoad(id);
+    }
 }
