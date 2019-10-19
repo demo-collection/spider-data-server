@@ -11,6 +11,8 @@
         <id column="download_url" property="downLoadUrl" jdbcType="VARCHAR"/>
         <id column="look_over" property="lookOver" jdbcType="INTEGER"/>
         <id column="reply" property="reply" jdbcType="INTEGER"/>
+        <id column="is_looked" property="isLooked" jdbcType="INTEGER"/>
+        <id column="is_download" property="isDownLoad" jdbcType="INTEGER"/>
     </resultMap>
 
     <select id="findAll" resultMap="BaseResultMap">
