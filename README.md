@@ -15,6 +15,9 @@ CREATE TABLE `store` (
   `download_url` mediumtext,
   `look_over` int(6) DEFAULT NULL,
   `reply` int(6) DEFAULT NULL,
+  `is_looked` tinyint(1) DEFAULT NULL,
+  `is_download` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40046 DEFAULT CHARSET=utf8
+) ENGINE=InnoDB AUTO_INCREMENT=40046 DEFAULT CHARSET=utf8;
 ```
+
