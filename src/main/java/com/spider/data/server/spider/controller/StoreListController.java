@@ -1,13 +1,17 @@
 package com.spider.data.server.spider.controller;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.spider.data.server.spider.data.BaseResponse;
 import com.spider.data.server.spider.data.PageInfo;
 import com.spider.data.server.spider.entity.StoreEntity;
 import com.spider.data.server.spider.service.StoreService;
+import com.spider.data.server.spider.utils.JsonRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -41,8 +45,17 @@ public class StoreListController {
         return BaseResponse.responseSuccess(storeEntityList, "请求成功");
     }
 
-    @PostMapping("/update_is_looked")
-    public BaseResponse updateIsLooked() {
-
+    @PostMapping(value = "/update_is_looked", produces = MediaType.APPLICATION_JSON_VALUE)
+    public BaseResponse updateIsLooked(HttpServletRequest request) {
+        StoreEntity storeEntity;
+        try {
+            String requestId = JsonRequest.getPayload(request);
+            storeEntity = JSONObject.parseObject(requestId, StoreEntity.class);
+            storeService.updateIsLooked(storeEntity.getId().toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return BaseResponse.responseError(e.getMessage());
+        }
+        return BaseResponse.responseSuccess(null, "success");
     }
 }
