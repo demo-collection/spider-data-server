@@ -6,10 +6,7 @@ import com.spider.data.server.spider.data.PageInfo;
 import com.spider.data.server.spider.entity.StoreEntity;
 import com.spider.data.server.spider.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -42,5 +39,10 @@ public class StoreListController {
             return BaseResponse.responseError("请求失败");
         }
         return BaseResponse.responseSuccess(storeEntityList, "请求成功");
+    }
+
+    @PostMapping("/update_is_looked")
+    public BaseResponse updateIsLooked() {
+
     }
 }
